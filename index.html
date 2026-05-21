@@ -1,0 +1,710 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tushar Yadav | Full-Stack Web Wizard</title>
+    <meta name="description" content="A highly aesthetic, dynamic interactive portfolio and resume of Tushar Yadav, Full-Stack Web Developer. Explore in Developer Mode, Gen-Z Vibe Mode, or Corporate Mode.">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Inter:wght@300;400;500;600&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Styling -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="mode-code">
+    <!-- Interactive Background Mouse Glow -->
+    <div id="cursor-glow"></div>
+
+    <!-- Background Grid Effect -->
+    <div class="bg-grid"></div>
+
+    <!-- Master Header Navigation -->
+    <header class="main-header" id="nav-header">
+        <button class="mobile-menu-btn" onclick="toggleMobileExplorer()" id="btn-mobile-toggle" aria-label="Toggle Navigation Sidebar">
+            <svg viewBox="0 0 24 24"><path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/></svg>
+        </button>
+        <div class="header-logo">
+            <span class="logo-bracket">&lt;</span>
+            <span class="logo-text">tushar.dev</span>
+            <span class="logo-bracket">/&gt;</span>
+            <div class="pulse-indicator-wrapper">
+                <span class="pulse-dot"></span>
+                <span class="pulse-text txt-code">status: cooking_apps.js</span>
+                <span class="pulse-text txt-genz">status: currently cookin' 🍳</span>
+                <span class="pulse-text txt-corp">status: Open to Opportunities</span>
+            </div>
+        </div>
+        
+        <!-- Toggle Segment Controllers -->
+        <nav class="mode-selector-wrapper">
+            <div class="mode-selector-bg"></div>
+            <button class="mode-btn active" id="btn-code" onclick="switchMode('mode-code')" data-index="0">
+                <svg class="nav-icon" viewBox="0 0 24 24"><path d="M9.4 16.6L4.8 12l4.6-4.6L8 6l-6 6 6 6 1.4-1.4zm5.2 0l4.6-4.6-4.6-4.6L16 6l6 6-6 6-1.4-1.4z"/></svg>
+                <span>Code.js</span>
+            </button>
+            <button class="mode-btn" id="btn-genz" onclick="switchMode('mode-genz')" data-index="1">
+                <svg class="nav-icon" viewBox="0 0 24 24"><path d="M12 2L2 22h9l-1 2 12-14h-9l1-10z"/></svg>
+                <span>Vibe Check</span>
+            </button>
+            <button class="mode-btn" id="btn-corp" onclick="switchMode('mode-corp')" data-index="2">
+                <svg class="nav-icon" viewBox="0 0 24 24"><path d="M20 6h-4V4c0-1.11-.89-2-2-2h-4c-1.11 0-2 .89-2 2v2H4c-1.11 0-1.99.89-1.99 2L2 19c0 1.11.89 2 2 2h16c1.11 0 2-.89 2-2V8c0-1.11-.89-2-2-2zm-6 0h-4V4h4v2z"/></svg>
+                <span>Corporate</span>
+            </button>
+        </nav>
+    </header>
+
+    <!-- Master Layout Wrapper -->
+    <div class="app-layout">
+        
+        <!-- Sidebar - Simulated IDE Explorer -->
+        <aside class="sidebar-explorer" id="sidebar">
+            <div class="explorer-header">
+                <span class="explorer-title">WORKSPACE</span>
+                <span class="explorer-action-dots">•••</span>
+            </div>
+            <div class="explorer-folder">
+                <div class="folder-title" onclick="toggleFolder('src-folder')">
+                    <svg class="folder-icon" viewBox="0 0 24 24"><path d="M10 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2h-8l-2-2z"/></svg>
+                    <span>tushar-yadav</span>
+                </div>
+                <div class="folder-contents active" id="src-folder">
+                    <a href="#hero-section" class="file-item active" id="file-home">
+                        <span class="file-extension md">M↓</span>
+                        <span class="file-name">README.md</span>
+                    </a>
+                    <a href="#about-section" class="file-item" id="file-about">
+                        <span class="file-extension js">JS</span>
+                        <span class="file-name">aboutMe.js</span>
+                    </a>
+                    <a href="#skills-section" class="file-item" id="file-skills">
+                        <span class="file-extension json">{}</span>
+                        <span class="file-name">skills.json</span>
+                    </a>
+                    <a href="#experience-section" class="file-item" id="file-exp">
+                        <span class="file-extension log">log</span>
+                        <span class="file-name">experience.log</span>
+                    </a>
+                    <a href="#projects-section" class="file-item" id="file-proj">
+                        <span class="file-extension css">#</span>
+                        <span class="file-name">projects.css</span>
+                    </a>
+                    <a href="#education-section" class="file-item" id="file-edu">
+                        <span class="file-extension db">db</span>
+                        <span class="file-name">education.db</span>
+                    </a>
+                    <a href="#contact-section" class="file-item" id="file-contact">
+                        <span class="file-extension sh">$_</span>
+                        <span class="file-name">connect.sh</span>
+                    </a>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main Scrolling Content Pane -->
+        <main class="content-viewport" id="scroll-container">
+            
+            <!-- Section 1: HERO / LANDING -->
+            <section class="section hero-sec" id="hero-section" data-file="file-home">
+                <div class="section-content hero-layout">
+                    
+                    <div class="hero-left">
+                        <!-- Custom Cyber Profile Avatar -->
+                        <div class="avatar-glow-container">
+                            <div class="avatar-ring-outer"></div>
+                            <div class="avatar-ring-inner"></div>
+                            <img src="avatar.png" alt="Tushar Yadav Avatar" class="profile-avatar" id="avatar-img">
+                            <div class="tech-orb t1">&lt;/&gt;</div>
+                            <div class="tech-orb t2">db</div>
+                            <div class="tech-orb t3">JS</div>
+                        </div>
+
+                        <div class="hero-title-group">
+                            <span class="hero-badge txt-code">&lt;candidate_info&gt;</span>
+                            <span class="hero-badge txt-genz">🚨 FRESH COOK IN THE TOWN</span>
+                            <span class="hero-badge txt-corp">Professional Portfolio</span>
+                            
+                            <h1 class="main-title" id="tushar-title">Tushar Yadav</h1>
+                            
+                            <div class="dynamic-subtitle-wrap">
+                                <span class="subtitle-arrow">&gt;</span>
+                                <span class="typing-text" id="typing-sub"></span>
+                            </div>
+                        </div>
+
+                        <!-- Mini quick-actions for high aesthetics -->
+                        <div class="hero-cta-group">
+                            <a href="#contact-section" class="btn-primary" id="btn-hire">
+                                <span class="txt-code">deploy_connection( )</span>
+                                <span class="txt-genz">Ping Me (Elite Vibe Check)</span>
+                                <span class="txt-corp">Contact Tushar</span>
+                            </a>
+                            <a href="#experience-section" class="btn-secondary" id="btn-view-work">
+                                <span class="txt-code">git log --oneline</span>
+                                <span class="txt-genz">Scroll My Lore</span>
+                                <span class="txt-corp">View Work History</span>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Right Side: Interactive Terminal Simulator -->
+                    <div class="hero-right">
+                        <div class="terminal-panel">
+                            <div class="terminal-header">
+                                <div class="terminal-dots">
+                                    <span class="dot red"></span>
+                                    <span class="dot yellow"></span>
+                                    <span class="dot green"></span>
+                                </div>
+                                <span class="terminal-tab-title">tushar@khategaon: ~</span>
+                            </div>
+                            <div class="terminal-body" id="term-body">
+                                <div class="term-line">
+                                    <span class="term-prompt">tushar-yadav $</span> <span class="term-input">cat hello_world.txt</span>
+                                </div>
+                                <div class="term-output text-glow" id="term-intro">
+                                    Initializing... Tushar Yadav resume package loaded.<br>
+                                    Welcome, guest recruiter. My stack is cooking and ready to compile.<br>
+                                    Type <span class="highlight-cmd">help</span> for available diagnostic commands.
+                                </div>
+                                <div class="term-line" id="term-input-line">
+                                    <span class="term-prompt">tushar-yadav $</span>
+                                    <input type="text" class="term-cli-input" id="term-cli-input" autofocus autocomplete="off" spellcheck="false" placeholder="Type skills, experience, or clear...">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </section>
+
+            <!-- Section 2: ABOUT ME -->
+            <section class="section" id="about-section" data-file="file-about">
+                <div class="section-content">
+                    <h2 class="section-h2">
+                        <span class="sec-accent txt-code">01. const ABOUT_ME = {</span>
+                        <span class="sec-accent txt-genz">✨ THE LORE / VIBE CHECK</span>
+                        <span class="sec-accent txt-corp">Professional Summary</span>
+                    </h2>
+
+                    <div class="glass-card about-card">
+                        <div class="card-edge-glow"></div>
+                        <div class="card-inner">
+                            <div class="code-bracket open txt-code">{</div>
+                            
+                            <!-- Standard corporate professional summary -->
+                            <div class="about-text txt-corp">
+                                <p class="lead-para">Motivated and passionate IT professional with hands-on experience in frontend and backend web development. Skilled in building responsive websites and web applications using modern technologies including HTML5, CSS3, JavaScript, Node.js, and MongoDB.</p>
+                                <p>Completed 8 months of practical, intensive coaching with a heavy focus on real-world projects, dynamic UI development, debugging, and robust problem-solving.</p>
+                            </div>
+
+                            <!-- Gen-Z Slang Summary -->
+                            <div class="about-text txt-genz">
+                                <p class="lead-para">I'm a full-stack wizard cooking elite code, zero cap. In my coding era, I specialize in crafting pixel-perfect, responsive layouts and backend servers that run clean with no latency issues. 🍳</p>
+                                <p>Grinded 8 months straight in a tech bootcamp masterclass, building templates, debugging complex scripts, and optimizing databases. Main character energy in every repo I push.</p>
+                            </div>
+
+                            <!-- Developer Code Summary -->
+                            <div class="about-text txt-code">
+                                <div class="code-indent">
+                                    <span class="code-key">name</span>: <span class="code-string">"Tushar Yadav"</span>,<br>
+                                    <span class="code-key">role</span>: <span class="code-string">"Full-Stack Web Trainee"</span>,<br>
+                                    <span class="code-key">xp_duration</span>: <span class="code-string">"8_months_intensive"</span>,<br>
+                                    <span class="code-key">vibe</span>: <span class="code-string">"Always learning, zero-downtime architect"</span>,<br>
+                                    <span class="code-key">mission</span>: <span class="code-string">"Convert user ideas into robust, responsive codeblocks"</span>,<br>
+                                    <span class="code-key">locales</span>: [<span class="code-string">"Khategaon"</span>, <span class="code-string">"Remote"</span>],<br>
+                                    <span class="code-key">core_drivers</span>: [<span class="code-string">"clean UI"</span>, <span class="code-string">"scalable databases"</span>, <span class="code-string">"interactive styling"</span>]
+                                </div>
+                            </div>
+
+                            <div class="code-bracket close txt-code">}</div>
+                        </div>
+                    </div>
+
+                    <!-- Personal Strengths / Vibe highlights -->
+                    <div class="strengths-wrapper">
+                        <h3 class="subsection-h3 txt-code">// internal_drivers:</h3>
+                        <h3 class="subsection-h3 txt-genz">🎯 CHARACTER PERKS (UNLOCKED)</h3>
+                        <h3 class="subsection-h3 txt-corp">Key Strengths & Competencies</h3>
+                        
+                        <div class="strengths-grid">
+                            <div class="strength-tag" id="str-learner">
+                                <div class="strength-icon">🚀</div>
+                                <div class="strength-content">
+                                    <span class="strength-title txt-code">QuickLearner.extend()</span>
+                                    <span class="strength-title txt-genz">Quick Learner Maxxing</span>
+                                    <span class="strength-title txt-corp">Rapid Technology Adaptation</span>
+                                    <span class="strength-desc txt-code">Upgrades mental libraries dynamically.</span>
+                                    <span class="strength-desc txt-genz">Learns new tech in record time. Elite focus.</span>
+                                    <span class="strength-desc txt-corp">Proven ability to master complex stacks quickly.</span>
+                                </div>
+                            </div>
+                            
+                            <div class="strength-tag" id="str-punctual">
+                                <div class="strength-icon">⏰</div>
+                                <div class="strength-content">
+                                    <span class="strength-title txt-code">cron.schedule('on_time')</span>
+                                    <span class="strength-title txt-genz">Hardworking & Punctual</span>
+                                    <span class="strength-title txt-corp">Reliable & Timely Execution</span>
+                                    <span class="strength-desc txt-code">Zero deadline misses. Punctual execution.</span>
+                                    <span class="strength-desc txt-genz">Always locked in, punctuality is undefeated.</span>
+                                    <span class="strength-desc txt-corp">Committed to hitting milestones and project timelines.</span>
+                                </div>
+                            </div>
+
+                            <div class="strength-tag" id="str-attitude">
+                                <div class="strength-icon">☀️</div>
+                                <div class="strength-content">
+                                    <span class="strength-title txt-code">this.attitude === 'positive'</span>
+                                    <span class="strength-title txt-genz">Immaculate Vibes Only</span>
+                                    <span class="strength-title txt-corp">Positive Attitude & Mindset</span>
+                                    <span class="strength-desc txt-code">Returns catch(err) => resolve('we_will_fix_it').</span>
+                                    <span class="strength-desc txt-genz">Bouncing back from bugs with positive energy.</span>
+                                    <span class="strength-desc txt-corp">Constructive team member focused on solutions.</span>
+                                </div>
+                            </div>
+
+                            <div class="strength-tag" id="str-collab">
+                                <div class="strength-icon">🤝</div>
+                                <div class="strength-content">
+                                    <span class="strength-title txt-code">git.merge('team_branch')</span>
+                                    <span class="strength-title txt-genz">Team Synergy Master</span>
+                                    <span class="strength-title txt-corp">Collaborative Communication</span>
+                                    <span class="strength-desc txt-code">Syncs assets and code flawlessly without conflicts.</span>
+                                    <span class="strength-desc txt-genz">Excellent synergy, carrying discussions, no friction.</span>
+                                    <span class="strength-desc txt-corp">Exceptional verbal exchange and dynamic team player.</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </section>
+
+            <!-- Section 3: TECHNICAL SKILLS -->
+            <section class="section" id="skills-section" data-file="file-skills">
+                <div class="section-content">
+                    <h2 class="section-h2">
+                        <span class="sec-accent txt-code">02. cat skills.json</span>
+                        <span class="sec-accent txt-genz">🔥 MY STACK IS ELITE</span>
+                        <span class="sec-accent txt-corp">Technical Expertise</span>
+                    </h2>
+
+                    <div class="skills-layout-grid">
+                        
+                        <!-- Skill Area 1: FRONTEND -->
+                        <div class="glass-card skill-card" id="card-frontend">
+                            <div class="card-header">
+                                <div class="skill-category-icon">
+                                    <svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+                                </div>
+                                <h3 class="skill-cat-title">Frontend Development</h3>
+                            </div>
+                            <div class="skills-badges-list">
+                                <div class="skill-badge" data-level="95%">
+                                    <span class="badge-name">HTML5</span>
+                                    <div class="badge-desc txt-code">&lt;semantic_layout&gt;</div>
+                                    <div class="badge-desc txt-genz">Building structure, clean layout meta</div>
+                                    <div class="badge-desc txt-corp">Structural page semantics & SEO base</div>
+                                    <div class="skill-bar"><div class="fill" style="width: 95%;"></div></div>
+                                </div>
+                                <div class="skill-badge" data-level="90%">
+                                    <span class="badge-name">CSS3</span>
+                                    <div class="badge-desc txt-code">.aesthetic { layout: flex; }</div>
+                                    <div class="badge-desc txt-genz">Glassmorphism, variables, flexbox flex</div>
+                                    <div class="badge-desc txt-corp">Responsive typography & layout design</div>
+                                    <div class="skill-bar"><div class="fill" style="width: 90%;"></div></div>
+                                </div>
+                                <div class="skill-badge" data-level="85%">
+                                    <span class="badge-name">JavaScript</span>
+                                    <div class="badge-desc txt-code">async () =&gt; await success;</div>
+                                    <div class="badge-desc txt-genz">DOM wizardry, logic controllers</div>
+                                    <div class="badge-desc txt-corp">Dynamic logic & browser interactivity</div>
+                                    <div class="skill-bar"><div class="fill" style="width: 85%;"></div></div>
+                                </div>
+                                <div class="skill-badge" data-level="90%">
+                                    <span class="badge-name">Responsive Design</span>
+                                    <div class="badge-desc txt-code">@media (max-width: mobile)</div>
+                                    <div class="badge-desc txt-genz">Looks clean on iPhone & Ultra-wide monitors</div>
+                                    <div class="badge-desc txt-corp">Mobile-first layouts & liquid navigation</div>
+                                    <div class="skill-bar"><div class="fill" style="width: 90%;"></div></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Skill Area 2: BACKEND & DATABASE -->
+                        <div class="glass-card skill-card" id="card-backend">
+                            <div class="card-header">
+                                <div class="skill-category-icon">
+                                    <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 17h-2v-2h2v2zm2.07-7.75l-.9.92C13.45 12.9 13 13.5 13 15h-2v-.5c0-1.1.45-2.1 1.17-2.83l1.24-1.26c.37-.36.59-.86.59-1.41 0-1.1-.9-2-2-2s-2 .9-2 2H7c0-2.76 2.24-5 5-5s5 2.24 5 5c0 1.04-.42 1.99-1.07 2.75z"/></svg>
+                                </div>
+                                <h3 class="skill-cat-title">Backend & Database</h3>
+                            </div>
+                            <div class="skills-badges-list">
+                                <div class="skill-badge" data-level="80%">
+                                    <span class="badge-name">Node.js</span>
+                                    <div class="badge-desc txt-code">require('http').createServer()</div>
+                                    <div class="badge-desc txt-genz">Engines running scripts at peak speed 🏎️</div>
+                                    <div class="badge-desc txt-corp">Scalable server-side script execution</div>
+                                    <div class="skill-bar"><div class="fill" style="width: 80%;"></div></div>
+                                </div>
+                                <div class="skill-badge" data-level="82%">
+                                    <span class="badge-name">Express.js</span>
+                                    <div class="badge-desc txt-code">app.use(router)</div>
+                                    <div class="badge-desc txt-genz">Server gates, middleware pipelines</div>
+                                    <div class="badge-desc txt-corp">Robust REST API routing systems</div>
+                                    <div class="skill-bar"><div class="fill" style="width: 82%;"></div></div>
+                                </div>
+                                <div class="skill-badge" data-level="80%">
+                                    <span class="badge-name">MongoDB</span>
+                                    <div class="badge-desc txt-code">db.collection.aggregate()</div>
+                                    <div class="badge-desc txt-genz">Keeping database documents rent-free 📁</div>
+                                    <div class="badge-desc txt-corp">JSON schema databases & aggregations</div>
+                                    <div class="skill-bar"><div class="fill" style="width: 80%;"></div></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Skill Area 3: UTILITIES & SYSTEM -->
+                        <div class="glass-card skill-card" id="card-other">
+                            <div class="card-header">
+                                <div class="skill-category-icon">
+                                    <svg viewBox="0 0 24 24"><path d="M22.7 19l-9.1-9.1c.9-2.3.4-5-1.5-6.9-2-2-5-2.4-7.4-1.3L9 6 6 9 1.6 4.3C.5 6.7.9 9.8 2.9 11.8c1.9 1.9 4.6 2.4 6.9 1.5l9.1 9.1c.4.4 1 .4 1.4 0l2.3-2.3c.5-.4.5-1.1.1-1.1z"/></svg>
+                                </div>
+                                <h3 class="skill-cat-title">Other Assets & Automation</h3>
+                            </div>
+                            <div class="skills-badges-list">
+                                <div class="skill-badge" data-level="90%">
+                                    <span class="badge-name">Windows OS & CLI</span>
+                                    <div class="badge-desc txt-code">powershell -Command "run"</div>
+                                    <div class="badge-desc txt-genz">Managing file directories in terminal mode</div>
+                                    <div class="badge-desc txt-corp">System configurations and operations</div>
+                                    <div class="skill-bar"><div class="fill" style="width: 90%;"></div></div>
+                                </div>
+                                <div class="skill-badge" data-level="95%">
+                                    <span class="badge-name">Software & File Handling</span>
+                                    <div class="badge-desc txt-code">fs.mkdirSync(nested_folders)</div>
+                                    <div class="badge-desc txt-genz">Zero disorganization, clean digital system</div>
+                                    <div class="badge-desc txt-corp">Effective assets management & logistics</div>
+                                    <div class="skill-bar"><div class="fill" style="width: 95%;"></div></div>
+                                </div>
+                                <div class="skill-badge" data-level="85%">
+                                    <span class="badge-name">AI & Automation Tools</span>
+                                    <div class="badge-desc txt-code">gpt.prompt(optimize_workflow)</div>
+                                    <div class="badge-desc txt-genz">AI prompts to boost dev productivity 🤖</div>
+                                    <div class="badge-desc txt-corp">Leveraging LLM interfaces for coding flow</div>
+                                    <div class="skill-bar"><div class="fill" style="width: 85%;"></div></div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </section>
+
+            <!-- Section 4: EXPERIENCE -->
+            <section class="section" id="experience-section" data-file="file-exp">
+                <div class="section-content">
+                    <h2 class="section-h2">
+                        <span class="sec-accent txt-code">03. git log --experience</span>
+                        <span class="sec-accent txt-genz">🛠️ THE CAREER ARC</span>
+                        <span class="sec-accent txt-corp">Professional Experience</span>
+                    </h2>
+
+                    <div class="timeline-container">
+                        <div class="timeline-line"></div>
+                        
+                        <div class="timeline-item active">
+                            <div class="timeline-bullet"></div>
+                            <div class="timeline-date">2025 - Present (8 Months)</div>
+                            <div class="glass-card timeline-card">
+                                <div class="card-inner">
+                                    <div class="timeline-card-header">
+                                        <div class="job-meta">
+                                            <h3 class="job-title txt-code">class WebDevelopmentTrainee extends Coaching</h3>
+                                            <h3 class="job-title txt-genz">Web Development Apprentice Trainee 🚀</h3>
+                                            <h3 class="job-title txt-corp">Web Development Trainee</h3>
+                                            
+                                            <span class="company-name">Coaching Institute</span>
+                                        </div>
+                                        <span class="job-duration-badge">8 Months Intensive</span>
+                                    </div>
+                                    
+                                    <ul class="timeline-bullet-list">
+                                        <!-- Code mode comments and features -->
+                                        <li class="txt-code"><span class="list-bullet">&gt;</span> git commit -m "feat: design aesthetic & highly responsive structures using CSS3 & HTML5 semantic components"</li>
+                                        <li class="txt-code"><span class="list-bullet">&gt;</span> git commit -m "feat: setup Express routers and configure Node.js runtime environments for web applications"</li>
+                                        <li class="txt-code"><span class="list-bullet">&gt;</span> git commit -m "feat: establish DB connection schemas via MongoDB clusters and verify secure collections integration"</li>
+                                        <li class="txt-code"><span class="list-bullet">&gt;</span> git commit -m "fix: resolve nested layout styling errors and refactor complex asynchronous code scopes"</li>
+                                        <li class="txt-code"><span class="list-bullet">&gt;</span> git commit -m "test: rebuild design templates to match high fidelity real-time target designs exactly"</li>
+
+                                        <!-- Gen-Z Translation -->
+                                        <li class="txt-genz"><span class="list-bullet">⚡</span> Designed aesthetic, liquid frontend layouts that adapt to any screen size flawlessly, no cap.</li>
+                                        <li class="txt-genz"><span class="list-bullet">⚡</span> Programmed robust, supercharged Express.js servers with Node, keeping backend routes tidy.</li>
+                                        <li class="txt-genz"><span class="list-bullet">⚡</span> Linked MongoDB collections to databases, query and filter documents rent-free with zero drops.</li>
+                                        <li class="txt-genz"><span class="list-bullet">⚡</span> Debugged complex UI layouts and logic scopes, converting runtime console red warnings into green lights.</li>
+                                        <li class="txt-genz"><span class="list-bullet">⚡</span> Recreated professional layouts and high-end landing pages to unlock absolute UI layouts mastery.</li>
+
+                                        <!-- Corporate description -->
+                                        <li class="txt-corp"><span class="list-bullet">▪</span> Engineered highly accessible and responsive grid layouts utilizing modern HTML5 and CSS3 methodologies.</li>
+                                        <li class="txt-corp"><span class="list-bullet">▪</span> Built stable backend logic using Node.js framework and Express, streamlining request-response workflows.</li>
+                                        <li class="txt-corp"><span class="list-bullet">▪</span> Structured and managed scalable schema architectures via MongoDB databases.</li>
+                                        <li class="txt-corp"><span class="list-bullet">▪</span> Spearheaded troubleshooting and debugging sessions, minimizing front-end and back-end rendering bottlenecks.</li>
+                                        <li class="txt-corp"><span class="list-bullet">▪</span> Developed real-world template recreations to perfect pixel-level accuracy and production standards.</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Section 5: PROJECTS -->
+            <section class="section" id="projects-section" data-file="file-proj">
+                <div class="section-content">
+                    <h2 class="section-h2">
+                        <span class="sec-accent txt-code">04. ls -la ./projects</span>
+                        <span class="sec-accent txt-genz">💻 SHIPPED AND COOKING</span>
+                        <span class="sec-accent txt-corp">Featured Projects</span>
+                    </h2>
+
+                    <div class="projects-grid">
+                        
+                        <!-- Project 1: Responsive Websites -->
+                        <div class="glass-card project-card" id="proj-responsive">
+                            <div class="project-header">
+                                <div class="proj-badge txt-code">package: frontend</div>
+                                <div class="proj-badge txt-genz">🎨 PIXEL PERFECT METALLIC</div>
+                                <div class="proj-badge txt-corp">Responsive Layout Design</div>
+                                <h3 class="project-title">Responsive UI Layout System</h3>
+                            </div>
+                            <div class="project-description">
+                                <p class="txt-code">// Configured complex flexbox frameworks, modular sections, footers, responsive grid matrices, and scroll bars.</p>
+                                <p class="txt-genz">Creating modern web pages with beautiful UI setups. Structured grid alignments, footer components, dynamic image lists, and sticky navigations that click. 🎨</p>
+                                <p class="txt-corp">Developed structural desktop and mobile-responsive websites using semantic structures. Designed fluid columns, layout grids, modern navigation headers, and interactive grids.</p>
+                            </div>
+                            <div class="project-tags">
+                                <span class="tag-pill html">HTML5</span>
+                                <span class="tag-pill css">CSS3</span>
+                                <span class="tag-pill js">JavaScript</span>
+                                <span class="tag-pill ui">UI/UX</span>
+                            </div>
+                        </div>
+
+                        <!-- Project 2: Full Stack Practises -->
+                        <div class="glass-card project-card" id="proj-fullstack">
+                            <div class="project-header">
+                                <div class="proj-badge txt-code">package: mern</div>
+                                <div class="proj-badge txt-genz">⚙️ BACKEND METADATA</div>
+                                <div class="proj-badge txt-corp">Full Stack Development</div>
+                                <h3 class="project-title">Full-Stack Application Sandbox</h3>
+                            </div>
+                            <div class="project-description">
+                                <p class="txt-code">// Programmed node routers, setup Express connection instances, and connected CRUD routes to MongoDB clusters.</p>
+                                <p class="txt-genz">Built full-stack engines under the hood. Managing servers with Express, routing URLs, and stashing files inside MongoDB seamlessly. ⚙️</p>
+                                <p class="txt-corp">Assembled functional server deployments. Configured Node servers, managed network endpoints, and integrated database handlers to store web application forms and logs.</p>
+                            </div>
+                            <div class="project-tags">
+                                <span class="tag-pill node">Node.js</span>
+                                <span class="tag-pill express">Express.js</span>
+                                <span class="tag-pill mongo">MongoDB</span>
+                                <span class="tag-pill api">REST API</span>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </section>
+
+            <!-- Section 6: EDUCATION -->
+            <section class="section" id="education-section" data-file="file-edu">
+                <div class="section-content">
+                    <h2 class="section-h2">
+                        <span class="sec-accent txt-code">05. query db.education</span>
+                        <span class="sec-accent txt-genz">🎓 THE ACADEMIC ARC</span>
+                        <span class="sec-accent txt-corp">Education</span>
+                    </h2>
+
+                    <div class="education-grid">
+                        
+                        <!-- 12th Grade -->
+                        <div class="glass-card edu-card" id="edu-12th">
+                            <div class="edu-icon">🎒</div>
+                            <div class="edu-info">
+                                <span class="edu-year">Graduated 2024</span>
+                                <h3 class="edu-degree txt-code">class HigherSecondary extends School</h3>
+                                <h3 class="edu-degree txt-genz">Higher Secondary Arc (12th) 🏫</h3>
+                                <h3 class="edu-degree txt-corp">Higher Secondary (12th Grade)</h3>
+                                <h4 class="edu-school">Fifth Mountain Academy</h4>
+                                <span class="edu-board">M.P. State Board of Secondary Education</span>
+                            </div>
+                        </div>
+
+                        <!-- 10th Grade -->
+                        <div class="glass-card edu-card" id="edu-10th">
+                            <div class="edu-icon">📝</div>
+                            <div class="edu-info">
+                                <span class="edu-year">Graduated 2022</span>
+                                <h3 class="edu-degree txt-code">class SecondarySchool extends School</h3>
+                                <h3 class="edu-degree txt-genz">Secondary School Arc (10th) 📝</h3>
+                                <h3 class="edu-degree txt-corp">Secondary School (10th Grade)</h3>
+                                <h4 class="edu-school">Fifth Mountain Academy</h4>
+                                <span class="edu-board">M.P. State Board of Secondary Education</span>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <!-- Languages Section integrated here beautifully -->
+                    <div class="languages-panel glass-card">
+                        <div class="card-inner">
+                            <h3 class="subsection-h3 txt-code">// active_locales_dictionary:</h3>
+                            <h3 class="subsection-h3 txt-genz">🗣️ GLOBAL COMMUNICATION PACKS</h3>
+                            <h3 class="subsection-h3 txt-corp">Languages</h3>
+                            
+                            <div class="languages-grid">
+                                <div class="lang-node">
+                                    <div class="lang-header">
+                                        <span class="lang-name">Hindi</span>
+                                        <span class="lang-level txt-code">"native_system"</span>
+                                        <span class="lang-level txt-genz">Native Vibe (100% Slay)</span>
+                                        <span class="lang-level txt-corp">Native Proficiency</span>
+                                    </div>
+                                    <div class="lang-meter"><div class="fill" style="width: 100%;"></div></div>
+                                </div>
+                                <div class="lang-node">
+                                    <div class="lang-header">
+                                        <span class="lang-name">English</span>
+                                        <span class="lang-level txt-code">"global_api_v2"</span>
+                                        <span class="lang-level txt-genz">Globally Certified (85% Flex)</span>
+                                        <span class="lang-level txt-corp">Professional Working Proficiency</span>
+                                    </div>
+                                    <div class="lang-meter"><div class="fill" style="width: 85%;"></div></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </section>
+
+            <!-- Section 7: CONTACT -->
+            <section class="section" id="contact-section" data-file="file-contact">
+                <div class="section-content">
+                    <h2 class="section-h2">
+                        <span class="sec-accent txt-code">06. ./connect.sh --ping</span>
+                        <span class="sec-accent txt-genz">📞 PING ME DIRECTLY</span>
+                        <span class="sec-accent txt-corp">Get in Touch</span>
+                    </h2>
+
+                    <div class="contact-layout">
+                        
+                        <!-- Left Details Card -->
+                        <div class="glass-card contact-info-card">
+                            <h3 class="contact-card-title txt-code">const channels = {</h3>
+                            <h3 class="contact-card-title txt-genz">⚡ ELITE DIRECT LINE</h3>
+                            <h3 class="contact-card-title txt-corp">Contact Directory</h3>
+                            
+                            <div class="contact-details-list">
+                                <!-- Phone -->
+                                <div class="contact-item" onclick="copyText('+919589045835', 'Phone copied to clipboard!')">
+                                    <div class="contact-icon">
+                                        <svg viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+                                    </div>
+                                    <div class="contact-meta">
+                                        <span class="label">PHONE</span>
+                                        <span class="value link">+91 9589045835</span>
+                                    </div>
+                                    <span class="copy-tag">COPY</span>
+                                </div>
+
+                                <!-- Email -->
+                                <div class="contact-item" onclick="copyText('tushar911.ty@gmail.com', 'Email copied to clipboard!')">
+                                    <div class="contact-icon">
+                                        <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+                                    </div>
+                                    <div class="contact-meta">
+                                        <span class="label">EMAIL</span>
+                                        <span class="value link">tushar911.ty@gmail.com</span>
+                                    </div>
+                                    <span class="copy-tag">COPY</span>
+                                </div>
+
+                                <!-- Location -->
+                                <div class="contact-item">
+                                    <div class="contact-icon">
+                                        <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+                                    </div>
+                                    <div class="contact-meta">
+                                        <span class="label">LOCATION</span>
+                                        <span class="value">Khategaon, M.P., India</span>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <h3 class="contact-card-title end txt-code">}</h3>
+                        </div>
+
+                        <!-- Right Contact CLI Form simulator -->
+                        <div class="glass-card contact-form-card">
+                            <div class="form-header">
+                                <span class="form-tab">git_ping_webhook.sh</span>
+                                <span class="form-status" id="webhook-status">SYSTEM_IDLE</span>
+                            </div>
+                            
+                            <form id="contact-form" onsubmit="handleContactSubmit(event)">
+                                <div class="input-row">
+                                    <div class="field-group">
+                                        <label for="sender-name">--name</label>
+                                        <input type="text" id="sender-name" placeholder="Your name..." required autocomplete="off">
+                                    </div>
+                                    <div class="field-group">
+                                        <label for="sender-email">--email</label>
+                                        <input type="email" id="sender-email" placeholder="Your email..." required autocomplete="off">
+                                    </div>
+                                </div>
+                                
+                                <div class="field-group msg-group">
+                                    <label for="sender-msg">--message</label>
+                                    <textarea id="sender-msg" rows="4" placeholder="What's cooking? Let's connect..." required></textarea>
+                                </div>
+
+                                <div class="form-footer">
+                                    <div class="form-terminal-output" id="form-logs">
+                                        $ awaiting connection parameters...
+                                    </div>
+                                    
+                                    <button type="submit" class="btn-primary form-submit-btn" id="btn-submit">
+                                        <span>curl -X POST connect.sh</span>
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+
+                    </div>
+                </div>
+            </section>
+
+            <!-- Global Footer -->
+            <footer class="app-footer">
+                <p class="copyright">&copy; 2026 Tushar Yadav. All systems operational. Powered by coffee and logic.</p>
+                <div class="footer-stats">
+                    <span class="stat-badge">v3.5.0-high</span>
+                    <span class="stat-badge">Gen-Z Compliant</span>
+                    <span class="stat-badge">100% Aesthetic</span>
+                </div>
+            </footer>
+
+        </main>
+    </div>
+
+    <!-- Alert toast notification popup -->
+    <div class="toast-alert" id="toast">
+        <span class="toast-icon">✨</span>
+        <span class="toast-msg">Text copied!</span>
+    </div>
+
+    <!-- Custom Script -->
+    <script src="script.js"></script>
+</body>
+</html>
