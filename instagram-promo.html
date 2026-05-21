@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Instagram Promo - Tushar Yadav Resume</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Outfit', 'Inter', sans-serif;
+            background: #0a0e27;
+            padding: 20px;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        .container {
+            display: flex;
+            gap: 30px;
+            flex-wrap: wrap;
+            justify-content: center;
+            max-width: 1400px;
+        }
+        .promo-card {
+            width: 400px;
+            height: 500px;
+            border-radius: 20px;
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            color: white;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(16, 185, 129, 0.2);
+        }
+        .promo-1 {
+            background: linear-gradient(135deg, #080c14 0%, #1a2a4a 100%);
+            border: 2px solid rgba(16, 185, 129, 0.5);
+        }
+        .promo-2 {
+            background: linear-gradient(135deg, #090514 0%, #2a1a4a 100%);
+            border: 2px solid rgba(255, 78, 147, 0.5);
+        }
+        .promo-3 {
+            background: linear-gradient(135deg, #0f172a 0%, #1a2a5a 100%);
+            border: 2px solid rgba(79, 70, 229, 0.5);
+        }
+        .promo-title {
+            font-size: 48px;
+            font-weight: 800;
+            margin-bottom: 10px;
+        }
+        .promo-subtitle {
+            font-size: 20px;
+            opacity: 0.8;
+            margin-bottom: 20px;
+        }
+        .promo-features {
+            list-style: none;
+            margin: 20px 0;
+        }
+        .promo-features li {
+            margin: 10px 0;
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .promo-features li:before {
+            content: "✨";
+            font-size: 18px;
+        }
+        .promo-cta {
+            align-self: flex-end;
+            font-weight: 600;
+            font-size: 16px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .qr-container {
+            background: white;
+            padding: 20px;
+            border-radius: 15px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
+            width: 350px;
+            text-align: center;
+        }
+        #qrcode {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+        }
+        .qr-title {
+            color: #080c14;
+            font-weight: 700;
+            font-size: 18px;
+        }
+        .qr-text {
+            color: #64748b;
+            font-size: 14px;
+        }
+        .qr-link {
+            color: #10b981;
+            font-weight: 600;
+            word-break: break-all;
+            font-size: 12px;
+        }
+        .captions {
+            background: rgba(16, 185, 129, 0.1);
+            border-left: 4px solid #10b981;
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 30px;
+            max-width: 600px;
+            color: white;
+        }
+        .caption-title {
+            font-weight: 700;
+            margin-bottom: 15px;
+            color: #10b981;
+        }
+        .caption {
+            background: rgba(0, 0, 0, 0.3);
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 8px;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+        h1 {
+            color: white;
+            margin-bottom: 30px;
+            font-size: 36px;
+        }
+    </style>
+</head>
+<body>
+    <h1>📱 Instagram Promo Pack</h1>
+    
+    <div class="container">
+        <!-- Promo Card 1 -->
+        <div class="promo-card promo-1">
+            <div>
+                <div class="promo-title">tushar.dev</div>
+                <div class="promo-subtitle">Interactive Resume</div>
+                <ul class="promo-features">
+                    <li>Full-Stack Developer</li>
+                    <li>3 Unique Modes</li>
+                    <li>Interactive UI</li>
+                    <li>Responsive Design</li>
+                </ul>
+            </div>
+            <div class="promo-cta">Explore Now →</div>
+        </div>
+
+        <!-- Promo Card 2 -->
+        <div class="promo-card promo-2">
+            <div>
+                <div class="promo-title" style="color: #ff4e93;">Vibe Check</div>
+                <div class="promo-subtitle">Gen-Z Mode</div>
+                <ul class="promo-features">
+                    <li>Cooking elite web layouts 🍳</li>
+                    <li>Peak speed backend servers 🏎️</li>
+                    <li>Passing every aesthetic vibe 💅</li>
+                    <li>Data architecture, rent-free 📁</li>
+                </ul>
+            </div>
+            <div class="promo-cta" style="color: #ff4e93;">Let's Go →</div>
+        </div>
+
+        <!-- Promo Card 3 -->
+        <div class="promo-card promo-3">
+            <div>
+                <div class="promo-title" style="color: #4f46e5;">Portfolio</div>
+                <div class="promo-subtitle">Corporate Mode</div>
+                <ul class="promo-features">
+                    <li>Passionate Web Developer</li>
+                    <li>Clean, Scalable Code</li>
+                    <li>Professional Design</li>
+                    <li>Ready for Opportunities</li>
+                </ul>
+            </div>
+            <div class="promo-cta" style="color: #4f46e5;">View Profile →</div>
+        </div>
+    </div>
+
+    <!-- QR Code Section -->
+    <div class="qr-container">
+        <div class="qr-title">📲 Scan to Visit</div>
+        <div id="qrcode"></div>
+        <div class="qr-text">Point your camera here to check out my interactive resume!</div>
+        <div class="qr-link">tushar911ty-wq.github.io/-Resume/</div>
+    </div>
+
+    <!-- Instagram Captions -->
+    <div class="captions">
+        <div class="caption-title">📝 Ready-to-Use Instagram Captions:</div>
+        
+        <div class="caption">
+            <strong>Caption 1 (Professional):</strong><br>
+            "Check out my interactive resume! 🚀 Switch between Code Mode, Gen-Z Vibe, or Corporate Mode to see different sides of my work. Full-stack web developer | Node.js | React | MongoDB | Always building something cool 💻 Link in bio 👆 #WebDeveloper #Portfolio #FullStack"
+        </div>
+        
+        <div class="caption">
+            <strong>Caption 2 (Casual):</strong><br>
+            "My resume is more interactive than your dating app 😂 Three unique modes, zero boring moments 🎉 Scan the QR code or click the link in bio to explore! #DevLife #WebDeveloper #CodingIsLife #InteractiveCV"
+        </div>
+        
+        <div class="caption">
+            <strong>Caption 3 (Call-to-Action):</strong><br>
+            "Building beautiful web experiences 🎨 Check out my interactive portfolio - Code Mode 💻 | Vibe Check 🎉 | Corporate Mode 💼 Switch between modes and explore my projects, skills & experience. Link in bio! #WebDev #Portfolio #HiringAlert"
+        </div>
+    </div>
+
+    <script>
+        // Generate QR Code
+        const qrLink = "https://tushar911ty-wq.github.io/-Resume/";
+        new QRCode(document.getElementById("qrcode"), {
+            text: qrLink,
+            width: 200,
+            height: 200,
+            colorDark: "#000000",
+            colorLight: "#ffffff",
+            correctLevel: QRCode.CorrectLevel.H
+        });
+    </script>
+</body>
+</html>
